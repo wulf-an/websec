@@ -1,0 +1,214 @@
+
+WWW
+In 1989, Tim Berners-Lee invented the World Wide Web to enable global data sharing. His system integrated URLs, HTTP, and HTML, allowing users to access web pages hosted on servers from anywhere in the world.
+
+Website 
+A website is essentially a collection of related web pages that are grouped together under a single domain name. Think of it as a digital book, where each page can contain text, images, videos, or forms. You access these pages using a web browser, which requests the content from a web server to display it on your screen.
+
+Web browser 
+A web browser is a software application that allows you to access and view web pages. When you enter a URL, the browser sends a request to the web server, and then receives the HTML, CSS, and JavaScript files to display the content on your screen. Popular examples include Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge
+
+Web Server 
+A web server is a computer system that houses website files—like HTML documents, images, and scripts. Its main job is to wait for requests from web browsers and then send the requested content over the internet to be displayed on your screen
+URL
+A URL stands for Uniform Resource Locator. In simple terms, it is the web address you type into your browser to find a specific website or page
+
+HTTP
+It is the fundamental protocol or set of rules that web browsers and web servers use to talk to each other. Whenever you browse the internet, HTTP is the system working behind the scenes to fetch data and deliver web pages to your screen.
+
+
+
+
+
+
+
+
+# What is a URL? (Uniform Resource Locator)
+
+```mermaid
+
+flowchart TD
+    URL["http://user:password@tryhackme.com:80/view-room?id=1#task3"]
+
+    URL --> Scheme["Scheme<br/>http://"]
+    URL --> User["User<br/>user"]
+    URL --> Password["Password<br/>password"]
+    URL --> Host["Host / Domain<br/>tryhackme.com"]
+    URL --> Port["Port<br/>80"]
+    URL --> Path["Path<br/>/view-room"]
+    URL --> Query["Query String<br/>?id=1"]
+    URL --> Fragment["Fragment<br/>#task3"]
+```
+
+- Query String or parameter: 
+Extra bits of information that can be sent to the requested path. For example, /blog?id=1 would tell the blog path that you wish to receive the blog article with the id of 1.
+
+- Fragment: 
+This is a reference to a location on the actual page requested. This is commonly used for pages with long content and can have a certain part of the page directly linked to it, so it is viewable to the user as soon as they access the page.
+
+- Scheme: 
+This instructs on what protocol to use for accessing the resource such as , HTTPS, (File Transfer Protocol).
+
+- Host or domain: 
+The domain name or IP address of the server you wish to access.
+
+- Port: 
+The Port that you are going to connect to, usually 80 for http and 443 for HTTPS, but this can be hosted on any port between 1 - 65535.
+
+
+## Absolute url and relative url
+- An absolute URL is the complete, exact address of a webpage or file. It contains every single piece of information needed to find that specific location from anywhere on the internet.
+- A relative URL is a shorthand address. It doesn’t look at the whole internet; it only looks at where you already are on the current website. It points to a file "relative" to the current folder or page.
+
+
+# Difference Between HTTP and HTTPS
+HTTP transmits data in plain text, which means sensitive information like passwords or credit card details can be easily intercepted. 
+HTTPS on the other hand, encrypts all communication using protocols like TLS, ensures server identity through digital certificates, and maintains data integrity with digital signatures, making it private and secure.
+
+# HTTP Request  
+
+GET / HTTP/1.1 - (It's possible to make a request to a web server with just one line)
+
+Ex Request:
+
+GET / HTTP/1.1
+
+Host: tryhackme.com
+User-Agent: Mozilla/5.0 Firefox/87.0
+Referer: https://tryhackme.com/
+
+# HTTP Response
+
+- Status Line
+HTTP/2 200
+
+- Cookies
+Things to inspect:
+HttpOnly
+Secure
+SameSite
+Domain
+Path
+Expiration
+
+- Content Information
+content-type: text/html; charset=utf-8
+OTHER EX: application/json, image/png , text/css etc..
+
+- Cache Headers
+cache-control: private, no-cache, no-store
+* Tell browsers and proxies whether they should cache the response.
+ex: Cache-Control: public
+
+- Security headers:
+
+| Header | Description |
+|--------|-------------|
+| `Strict-Transport-Security` | Forces HTTPS and prevents SSL stripping and protocol downgrade attacks. |
+| `Content-Security-Policy` | Controls what resources (scripts, styles, images, etc.) the page can load, helping mitigate XSS, code injection, and data injection attacks. |
+| `X-Frame-Options: DENY` | Prevents the page from being embedded in an `<iframe>`, protecting against clickjacking attacks. |
+| `X-Content-Type-Options: nosniff` | Stops browsers from MIME type sniffing, preventing content-type confusion attacks. |
+| `Permissions-Policy` | Controls access to browser features, restricting APIs like camera, microphone, geolocation, USB, and others. |
+| `Cross-Origin-Resource-Policy` | Controls which origins can load resources, helping prevent cross-origin data leaks. |
+| `Cross-Origin-Opener-Policy` | Isolates browsing contexts, helping defend against cross-origin attacks such as XS-Leaks. |
+| `Origin-Agent-Cluster` | Isolates the page into its own browser process/origin agent cluster, improving process isolation and browser security. |
+
+
+- server:
+Server: nginx
+Server: Apache
+
+
+# Common Request Headers
+
+﻿These are headers that are sent from the client (usually your browser) to the server.
+
+- Host: Some web servers host multiple websites so by providing the host headers you can tell it which one you require, otherwise you'll just receive the default website for the server.
+
+- User-Agent: This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
+
+- Content-Length: When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
+
+- Accept-Encoding: Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
+
+- Cookie: Data sent to the server to help remember your information (see cookies task for more information).
+
+
+# Common Response Headers
+
+These are the headers that are returned to the client from the server after a request.
+
+- Set-Cookie: Information to store which gets sent back to the web server on each request (see cookies task for more information).
+
+- Cache-Control: How long to store the content of the response in the browser's cache before it requests it again.
+
+- Content-Type: This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+
+- Content-Encoding: What method has been used to compress the data to make it smaller when sending it over the internet.
+
+
+
+# Headers You Should Master as a Pentester
+| Header                      | Why Important           |
+| --------------------------- | ----------------------- |
+| Host                        | Virtual hosting         |
+| Cookie                      | Authentication          |
+| Set-Cookie                  | Sessions                |
+| Authorization               | Login/API auth          |
+| Location                    | Redirects               |
+| Content-Type                | File type               |
+| Content-Length              | Body size               |
+| User-Agent                  | Client identification   |
+| Referer                     | Previous page           |
+| Origin                      | CORS/CSRF               |
+| Access-Control-Allow-Origin | CORS                    |
+| Content-Security-Policy     | XSS defense             |
+| Strict-Transport-Security   | HTTPS enforcement       |
+| X-Frame-Options             | Clickjacking prevention |
+| Cache-Control               | Caching behavior        |
+
+
+
+
+
+
+# HTTP Methods:
+
+POST, GET, PUT, DELETE, TRACE, HEAD, OPTIONS ,PATCH
+
+
+
+
+# HTTP Status Codes:
+200 - OK 	The request was completed successfully.
+201 - Created 	A resource has been created (for example a new user or new blog post).
+301 - Moved Permanently 	This redirects the client's browser to a new webpage or tells search engines that the page has moved somewhere else and to look there instead.
+302 - Found 	Similar to the above permanent redirect, but as the name suggests, this is only a temporary change and it may change again in the near future.
+400 - Bad Request 	This tells the browser that something was either wrong or missing in their request. This could sometimes be used if the web server resource that is being requested expected a certain parameter that the client didn't send.
+401 - Not Authorised 	You are not currently allowed to view this resource until you have authorised with the web application, most commonly with a username and password.
+403 - Forbidden 	You do not have permission to view this resource whether you are logged in or not.
+405 - Method Not Allowed 	The resource does not allow this method request, for example, you send a GET request to the resource /create-account when it was expecting a POST request instead.
+404 - Page Not Found 	The page/resource you requested does not exist.
+500 - Internal Service Error 	The server has encountered some kind of error with your request that it doesn't know how to handle properly.
+503 - Service Unavailable 	
+
+This server cannot handle your request as it's either overloaded or down for maintenance.
+
+
+
+
+
+# Cookies 
+Cookies are  just a small piece of data that is stored on your computer. Cookies are saved when you receive a "Set-Cookie" header from a web server. Then every further request you make, you'll send the cookie data back to the web server.Because is HTTP stateless (doesn't keep track of your previous requests), cookies can be used to remind the web server who you are.
+
+* Cookies can be used for many purposes but are most commonly used for website authentication. 
+
+* The cookie value is usually not the user's password. Instead, it contains a token—a unique, hard-to-guess identifier that represents the user's session.
+
+
+
+# Difference between Cookies and Set-Cookies
+| Header           | Sent By              | Purpose                                             |
+| ---------------- | -------------------- | --------------------------------------------------- |
+| **`Set-Cookie`** | **Server → Browser** | Tells the browser to create or update a cookie.     |
+| **`Cookie`**     | **Browser → Server** | Sends previously stored cookies back to the server. |
