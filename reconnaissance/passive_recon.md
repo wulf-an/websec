@@ -131,7 +131,8 @@ Using DNSDumpster is incredibly straightforward because it is a completely web-b
 
  It aggregates public DNS data from sources such as search engine caches, zone transfer databases, and certificate records. It does not perform brute-force enumeration, which means it remains fully passive. The results include subdomains and hosts, resolved IPs with geolocation, MX, TXT, and CNAME records, and visual maps showing the relationships between these.
 
-
+## ViewDNS 
+ViewDNS is useful for passive DNS and domain reconnaissance because it provides multiple lookup capabilities through a simple interface. We can use it to collect DNS records, WHOIS information, reverse DNS, reverse IP information, and other publicly available domain-related data. Its main advantage is that the results are easy to understand and multiple reconnaissance functions are available in one platform.”
 
 ## Certificate Transparency (CT) Logs
 
@@ -236,7 +237,7 @@ Shodan is a search engine for internet-connected devices. It continuously scans 
 | **6** | **Amass (Passive Mode)** | Perform comprehensive passive subdomain enumeration and correlate data from many sources.                                         |
 | **7** | **Censys**               | Search for certificates, hosts, services, and infrastructure associated with the domain.                                          |
 | **8** | **Shodan**               | Identify internet-exposed hosts, open ports, services, banners, and technologies.                                                 |
-
+| **9** | **ViewDNS**              | ViewDNS is useful for passive DNS and domain reconnaissance because it provides multiple lookup capabilities through a simple interface.|
 
 
 
