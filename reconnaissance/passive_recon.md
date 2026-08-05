@@ -226,6 +226,22 @@ Shodan is a search engine for internet-connected devices. It continuously scans 
 8. DNSDumpster
 
 
+
+| **Tool**              | **Main Purpose**                                                                                                                             |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Google / Bing**     | Find publicly indexed social media profiles, posts, mentions, and other publicly available information.                                      |
+| **Sherlock**          | Check whether a username exists across hundreds of social media platforms and websites.                                                      |
+| **WhatsMyName**       | Search for a username across multiple websites to identify associated online accounts.                                                       |
+| **Maigret**           | Perform username enumeration across numerous online services and social platforms.                                                           |
+| **Maltego**           | Correlate and visualize relationships between people, usernames, email addresses, domains, organizations, and other public OSINT data.       |
+| **SpiderFoot**        | Automate OSINT collection from multiple public sources, including websites, social media, DNS, domains, and security data.                   |
+| **theHarvester**      | Gather publicly available email addresses, names, domains, subdomains, and related information from search engines and other public sources. |
+| **Have I Been Pwned** | Check whether an email address or password appears in publicly known data breaches.                                                          |
+| **Google Dorks**      | Use advanced Google search operators to locate publicly indexed social media profiles, documents, mentions, and other exposed information.   |
+
+
+
+
 # A logical passive reconnaissance workflow
 | Order | Tool                     | Purpose                                                                                                                           |
 | ----- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
