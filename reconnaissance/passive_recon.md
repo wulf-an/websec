@@ -322,14 +322,17 @@ MX record
 → Found a mail server
 → Email is an internet-facing service
 → Check its security configuration
+
 A record
 → Found an IP address
 → There is an internet-facing server
 → Identify what service is running there
+
 CNAME
 → Found a third-party service
 → The organization depends on another provider
 → Check whether the dependency is still valid
+
 Nameserver
 → Found the DNS provider
 → DNS infrastructure identified
