@@ -227,6 +227,8 @@ Shodan is a search engine for internet-connected devices. It continuously scans 
 
 
 
+## Social Media Reconnaissance Tools
+
 | **Tool**              | **Main Purpose**                                                                                                                             |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Google / Bing**     | Find publicly indexed social media profiles, posts, mentions, and other publicly available information.                                      |
